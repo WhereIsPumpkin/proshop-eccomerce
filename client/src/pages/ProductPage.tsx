@@ -1,12 +1,35 @@
-import { useParams } from 'react-router-dom';
-import products from '../products';
-import { Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
 import Rating from '../components/Rating';
+import axios from 'axios';
 
 const ProductPage = () => {
+  const [product, setProduct] = useState({
+    _id: '',
+    name: '',
+    image: '',
+    description: '',
+    price: 0,
+    rating: 0,
+    numReviews: 0,
+    countInStock: 0,
+  });
   const { id: productId } = useParams();
-  const product = products.find((p) => p._id === productId);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const { data } = await axios.get(`/api/products/${productId}`);
+        setProduct(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchProduct();
+  }, [productId]);
+
   if (!product) {
     return null;
   }
@@ -18,12 +41,14 @@ const ProductPage = () => {
       </Link>
       <Row>
         <Col md={5}>
-          <Image src={product?.image} alt={product?.image} fluid />
+          <Image src={product?.image} alt={product?.name} fluid />{' '}
+          {/* Use 'name' as alt attribute */}
         </Col>
         <Col md={4}>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <h3>{product?.name}</h3>
+              <h3>{product?.name || 'N/A'}</h3>{' '}
+              {/* Add a default value for 'name' */}
             </ListGroup.Item>
             <ListGroup.Item>
               <Rating
