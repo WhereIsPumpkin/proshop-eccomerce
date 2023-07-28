@@ -3,7 +3,10 @@ import products from "./data/products.js";
 import dotenv from "dotenv";
 import cors from "cors";
 dotenv.config();
+import connect from "./database/mongo.js";
 const port = process.env.PORT || 5000;
+
+connect();
 
 const app = express();
 
