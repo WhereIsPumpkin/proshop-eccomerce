@@ -8,11 +8,14 @@
     "start": "node api/server.js",
     "server": "nodemon api/server.js",
     "client": "npm run dev --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node api/seeder.js",
+    "data:destroy": "node api/seeder.js -d"
   },
   "author": "Saba Gogrichiani",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "mongoose": "^7.4.1"
