@@ -55,6 +55,7 @@ const ProductPage = () => {
             <Image src={product?.image} alt={product?.name} fluid />{' '}
             {/* Use 'name' as alt attribute */}
           </Col>
+
           <Col md={4}>
             <ListGroup variant="flush">
               <ListGroup.Item>
@@ -73,6 +74,7 @@ const ProductPage = () => {
               </ListGroup.Item>
             </ListGroup>
           </Col>
+
           <Col md={3}>
             <Card>
               <ListGroup variant="flush">
