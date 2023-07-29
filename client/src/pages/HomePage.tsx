@@ -1,6 +1,8 @@
 import { Row, Col } from 'react-bootstrap';
 import ProductCard from '../components/ProductCard';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
+import Message from '../components/Message';
+import Loader from '../components/Loader';
 
 interface Product {
   _id: string;
@@ -12,12 +14,10 @@ const HomePage = () => {
   return (
     <>
       {isLoading ? (
-        <h2>Loading...</h2>
+        <Loader />
       ) : error ? (
         'status' in error ? (
-          <div>
-            {error.status}: {JSON.stringify(error.data)}
-          </div>
+          <Message variant="danger">{`${error.status}: ${error.data}`}</Message>
         ) : (
           <div>{error.message}</div>
         )

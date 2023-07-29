@@ -1,7 +1,9 @@
 import { useParams, Link } from 'react-router-dom';
 import { useGetProductDetailsQuery } from '../slices/productsApiSlice';
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
+import Message from '../components/Message';
 import Rating from '../components/Rating';
+import Loader from '../components/Loader';
 
 const ProductPage = () => {
   const { id: productId } = useParams();
@@ -22,12 +24,10 @@ const ProductPage = () => {
       </Link>
 
       {isLoading ? (
-        <h2>Loading...</h2>
+        <Loader />
       ) : error ? (
         'status' in error ? (
-          <div>
-            {error.status}: {JSON.stringify(error.data)}
-          </div>
+          <Message variant="danger">{`${error.status}: ${error.data}`}</Message>
         ) : (
           <div>{error.message}</div>
         )
