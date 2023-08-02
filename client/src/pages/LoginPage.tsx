@@ -32,7 +32,7 @@ const LoginPage = () => {
     }
   }, [navigate, userInfo, redirect]);
 
-  const submitHandler = async (e) => {
+  const submitHandler = async (e: any) => {
     e.preventDefault();
     try {
       const res = await login({ email, password }).unwrap();

@@ -13,9 +13,12 @@ import { Provider } from 'react-redux';
 import store from './store.ts';
 import HomePage from './pages/HomePage.tsx';
 import ProductPage from './pages/ProductPage.tsx';
+import PrivateRoute from './components/PrivateRoute.tsx';
 import CartPage from './pages/CartPage.tsx';
 import LoginPage from './pages/LoginPage.tsx';
 import RegisterPage from './pages/RegisterPage.tsx';
+import ShippingPage from './pages/ShippingPage.tsx';
+import PaymentScreen from './pages/PaymentScreen.tsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,6 +28,11 @@ const router = createBrowserRouter(
       <Route path="/cart" element={<CartPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+
+      <Route path="" element={<PrivateRoute />}>
+        <Route path="/shipping" element={<ShippingPage />} />
+        <Route path="/payment" element={<PaymentScreen />} />
+      </Route>
     </Route>
   )
 );

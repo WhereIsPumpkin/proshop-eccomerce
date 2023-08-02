@@ -5,7 +5,7 @@ interface Review {
     user: string;
 }
 
-export interface ProductTypes {
+interface ProductTypes {
     _id: string;
     user: string;
     name: string;
@@ -20,9 +20,19 @@ export interface ProductTypes {
     countInStock: number;
     qty: number;
 }
-  
+
+
+interface ShippingAddress {
+    address: string;
+    city: string;
+    postalCode: string;
+    country: string;
+}
+
 export interface CartState {
     cartItems: ProductTypes[];
+    shippingAddress: ShippingAddress;
+    paymentMethod: string;
     itemsPrice: number;
     shippingPrice: number;
     taxPrice: number;
