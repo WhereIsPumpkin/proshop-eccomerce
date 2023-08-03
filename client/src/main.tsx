@@ -19,6 +19,8 @@ import LoginPage from './pages/LoginPage.tsx';
 import RegisterPage from './pages/RegisterPage.tsx';
 import ShippingPage from './pages/ShippingPage.tsx';
 import PaymentScreen from './pages/PaymentScreen.tsx';
+import PlaceOrderScreen from './pages/PlaceOrderScreen.tsx';
+import OrderPage from './pages/OrderPage.tsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,6 +34,8 @@ const router = createBrowserRouter(
       <Route path="" element={<PrivateRoute />}>
         <Route path="/shipping" element={<ShippingPage />} />
         <Route path="/payment" element={<PaymentScreen />} />
+        <Route path="/placeorder" element={<PlaceOrderScreen />} />
+        <Route path="/order/:id" element={<OrderPage />} />
       </Route>
     </Route>
   )

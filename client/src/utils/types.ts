@@ -1,4 +1,5 @@
 interface Review {
+import { products } from './../../../api/data/products';
     name: string;
     rating: number;
     comment: string; 
@@ -6,6 +7,7 @@ interface Review {
 }
 
 interface ProductTypes {
+    product: string;
     _id: string;
     user: string;
     name: string;

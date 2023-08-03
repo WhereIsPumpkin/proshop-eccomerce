@@ -46,9 +46,14 @@ const cartSlice = createSlice({
     savePaymentMethod: (state, action) => {
       state.paymentMethod = action.payload;
       return updateCart(state);
+    },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    clearCartItems : (state, _action) => {
+      state.cartItems = [];
+      return updateCart(state);
     }
   },
 });
 
-export const { addToCart, removeFromCart, saveShippingAddress, savePaymentMethod } = cartSlice.actions;
+export const { addToCart, removeFromCart, saveShippingAddress, savePaymentMethod, clearCartItems } = cartSlice.actions;
 export default cartSlice.reducer;
